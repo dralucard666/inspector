@@ -40,6 +40,7 @@ import {
   TooltipContent,
 } from "@/components/ui/tooltip";
 import CustomHeaders from "./CustomHeaders";
+import TokenRefresh from "./TokenRefresh";
 import { CustomHeaders as CustomHeadersType } from "@/lib/types/customHeaders";
 import { useToast } from "../lib/hooks/useToast";
 import IconDisplay, { WithIcons } from "./IconDisplay";
@@ -551,6 +552,16 @@ const Sidebar = ({
                   <CustomHeaders
                     headers={customHeaders}
                     onChange={setCustomHeaders}
+                  />
+                </div>
+                {/* Token auto-refresh */}
+                <div className="p-3 rounded border">
+                  <TokenRefresh
+                    customHeaders={customHeaders}
+                    setCustomHeaders={setCustomHeaders}
+                    connectionStatus={connectionStatus}
+                    onConnect={onConnect}
+                    onDisconnect={onDisconnect}
                   />
                 </div>
                 {transportType !== "stdio" && (
